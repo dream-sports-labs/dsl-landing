@@ -30,7 +30,6 @@ export function ThemeProvider({
   const [theme, setTheme] = useState<Theme>(
     () => (localStorage.getItem(storageKey) as Theme) || defaultTheme
   );
-  const [isChanging, setIsChanging] = useState(false);
 
   useEffect(() => {
     const root = window.document.documentElement;
@@ -45,29 +44,23 @@ export function ThemeProvider({
       root.classList.add(systemTheme);
       return;
     }
-
-    // Add transition class for smooth theme changes
-    setIsChanging(true);
     
-    // Apply the theme
+    // Apply the theme immediately
     root.classList.add(theme);
-    
-    // Remove transition class after animation completes
-    const timeout = setTimeout(() => {
-      setIsChanging(false);
-    }, 500);
-    
-    return () => clearTimeout(timeout);
   }, [theme]);
 
-  // Add transition styles to the document head
+  // Add optimized transition styles to the document head
   useEffect(() => {
     if (!document.getElementById('theme-transition-style')) {
       const style = document.createElement('style');
       style.id = 'theme-transition-style';
       style.innerHTML = `
-        *, *::before, *::after {
-          transition: background-color 0.5s ease, border-color 0.5s ease, color 0.5s ease, fill 0.5s ease, stroke 0.5s ease;
+        html.theme-transition,
+        html.theme-transition *,
+        html.theme-transition *::before,
+        html.theme-transition *::after {
+          transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease !important;
+          transition-delay: 0s !important;
         }
       `;
       document.head.appendChild(style);
@@ -81,9 +74,18 @@ export function ThemeProvider({
 
   const value = {
     theme,
-    setTheme: (theme: Theme) => {
-      localStorage.setItem(storageKey, theme);
-      setTheme(theme);
+    setTheme: (newTheme: Theme) => {
+      // Add transition class temporarily
+      document.documentElement.classList.add('theme-transition');
+      
+      // Set the theme
+      localStorage.setItem(storageKey, newTheme);
+      setTheme(newTheme);
+      
+      // Remove transition class after animation completes
+      setTimeout(() => {
+        document.documentElement.classList.remove('theme-transition');
+      }, 200); // Match the transition duration
     },
   };
 

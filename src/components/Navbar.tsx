@@ -1,8 +1,7 @@
-
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "./ThemeToggle";
-import { Menu, X, Github, Sparkles } from "lucide-react";
+import { Menu, X, Github } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
@@ -19,8 +18,8 @@ const Navbar = () => {
 
   const navLinks = [
     { name: "Home", href: "/" },
-    { name: "Projects", href: "/projects" },
-    { name: "About", href: "/#about" },
+    { name: "Featured Projects", href: "/#featured-projects" },
+    { name: "Upcoming Projects", href: "/#upcoming-projects" },
     { name: "Community", href: "/#community" },
   ];
 
@@ -34,7 +33,11 @@ const Navbar = () => {
     >
       <div className="container mx-auto px-4 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-2 group">
-          <Sparkles className={`h-5 w-5 text-primary transition-all duration-300 ${isScrolled ? 'animate-pulse-soft' : 'animate-spin-slow'}`} />
+          <img 
+            src="/lovable-uploads/9f532731-868c-4fe5-93e2-734f0b13849b.png" 
+            alt="DreamSportsLabs Logo" 
+            className="h-8 w-8"
+          />
           <span className="font-bold text-xl md:text-2xl flex items-center">
             Dream<span className="text-gradient relative">SportsLabs</span>
             <span className={`absolute -bottom-1 left-0 w-full h-0.5 bg-gradient-to-r from-primary to-yellow-500 scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500 ${isScrolled ? 'opacity-100' : 'opacity-70'}`}></span>
@@ -42,7 +45,7 @@ const Navbar = () => {
         </Link>
 
         {/* Desktop Navigation */}
-        <nav className={`hidden md:flex items-center gap-6 transition-all duration-500 ${isScrolled ? 'opacity-100' : 'opacity-90 hover:opacity-100'}`}>
+        <nav className={`hidden lg:flex items-center gap-4 transition-all duration-500 ${isScrolled ? 'opacity-100' : 'opacity-90 hover:opacity-100'}`}>
           {navLinks.map((link, index) => (
             link.href.startsWith("/#") ? (
               <a
@@ -65,7 +68,7 @@ const Navbar = () => {
             )
           ))}
           <a
-            href="https://github.com/dreamsportslabs"
+            href="https://github.com/dream-sports-labs"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="GitHub"
@@ -79,7 +82,7 @@ const Navbar = () => {
         </nav>
 
         {/* Mobile Navigation Toggle */}
-        <div className="flex items-center gap-3 md:hidden">
+        <div className="flex items-center gap-3 lg:hidden">
           <ThemeToggle />
           <Button
             variant="ghost"

@@ -1,70 +1,83 @@
 
-import { Github, FileText, ExternalLink } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { useState } from "react";
+import { Star, Code, GitFork, ExternalLink, ChevronRight } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 interface ProjectCardProps {
   title: string;
   description: string;
-  logoSrc: string;
-  githubUrl: string;
-  docsUrl: string;
+  logoSrc?: string;
+  stars?: number;
+  githubUrl?: string;
+  variant?: 'default' | 'featured';
 }
 
 const ProjectCard = ({
   title,
   description,
-  logoSrc,
+  stars,
   githubUrl,
-  docsUrl,
+  variant = 'default'
 }: ProjectCardProps) => {
   const [isHovered, setIsHovered] = useState(false);
   
+  const handleClick = () => {
+    if (githubUrl) {
+      window.open(githubUrl, "_blank", "noopener,noreferrer");
+    }
+  };
+
+  const borderStyles = variant === 'featured' 
+    ? 'border border-gray-300/50 hover:border-gray-400/70' 
+    : 'border-2 border-primary/50 hover:border-primary';
+
   return (
     <div 
-      className="project-card fancy-card-effect group animate-fade-in-up"
+      className={`group relative overflow-hidden rounded-xl transition-all duration-500 animate-fade-in-up ${borderStyles} ${githubUrl ? 'cursor-pointer' : ''} hover:shadow-xl`}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
+      onClick={handleClick}
     >
-      <div className="p-6 transition-all duration-300">
-        <div className="flex items-center mb-4 relative">
-          <div className="relative">
-            <div className={`absolute inset-0 bg-primary/20 rounded-md blur-md transition-opacity duration-300 ${isHovered ? 'opacity-100' : 'opacity-0'}`}></div>
-            <img
-              src={logoSrc}
-              alt={`${title} logo`}
-              className={`w-12 h-12 mr-3 rounded-md relative z-10 transition-all duration-500 ${isHovered ? 'scale-110' : ''}`}
-            />
+      {/* Content container */}
+      <div className="relative h-full flex flex-col justify-between z-10 bg-card/95">
+        <div className="p-6">
+          <div className="flex items-center gap-4 mb-4">
+            <div className={`h-12 w-12 rounded-full bg-card flex items-center justify-center border border-border/50 shadow-sm transition-all duration-500 ${isHovered ? 'bg-primary/10' : ''}`}>
+              <Code className={`h-5 w-5 transition-all duration-500 ${isHovered ? 'text-primary' : 'text-muted-foreground'}`} />
+            </div>
+            
+            <div>
+              <h3 className={`text-xl font-medium transition-all duration-300 ${isHovered ? 'text-primary' : 'text-foreground'}`}>
+                {title}
+              </h3>
+              
+              {stars !== undefined && (
+                <div className="flex items-center mt-1">
+                  <Star className="h-3.5 w-3.5 mr-1.5 text-amber-500" />
+                  <span className="text-xs font-medium text-foreground/70">{stars}</span>
+                </div>
+              )}
+            </div>
           </div>
-          <h3 className="text-xl font-bold group-hover:text-primary transition-colors duration-300">{title}</h3>
+          
+          <p className="text-muted-foreground transition-all duration-300 line-clamp-3 text-sm">
+            {description}
+          </p>
         </div>
-        <p className="text-muted-foreground mb-6 transition-all duration-300 group-hover:text-foreground">{description}</p>
-        <div className="flex gap-3">
-          <Button asChild variant="outline" size="sm" className="btn-hover-effect">
-            <a
-              href={githubUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={`${title} GitHub repository`}
-              className="flex items-center gap-1 transition-transform hover:scale-105"
-            >
-              <Github className="h-4 w-4 transition-transform group-hover:animate-bounce-soft" />
-              <span>GitHub</span>
-            </a>
-          </Button>
-          <Button asChild variant="outline" size="sm" className="btn-hover-effect">
-            <a
-              href={docsUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={`${title} documentation`}
-              className="flex items-center gap-1 transition-transform hover:scale-105"
-            >
-              <FileText className="h-4 w-4 transition-transform group-hover:animate-bounce-soft" />
-              <span>Docs</span>
-            </a>
-          </Button>
-        </div>
+        
+        {githubUrl && (
+          <div className={`flex items-center justify-between p-4 mt-auto border-t border-border/30 bg-background/50 backdrop-blur-sm transition-all duration-500 ${isHovered ? 'bg-primary/5' : ''}`}>
+            <div className="flex items-center space-x-2">
+              <GitFork className={`h-4 w-4 transition-all duration-300 ${isHovered ? 'text-primary' : 'text-muted-foreground'}`} />
+              <span className={`text-xs transition-all duration-300 ${isHovered ? 'text-primary font-medium' : 'text-muted-foreground'}`}>GitHub Repository</span>
+            </div>
+            
+            <div className={`flex items-center transition-all duration-500 ${isHovered ? 'translate-x-0 opacity-100' : 'translate-x-4 opacity-0'}`}>
+              <ChevronRight className="h-4 w-4 text-primary" />
+              <ExternalLink className="h-4 w-4 text-primary ml-1" />
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

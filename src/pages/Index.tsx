@@ -5,6 +5,7 @@ import Hero from "@/components/Hero";
 import FeaturedProjects from "@/components/FeaturedProjects";
 import UpcomingProjects from "@/components/UpcomingProjects";
 import About from "@/components/About";
+import TrendingFeed from "@/components/TrendingFeed";
 import Community from "@/components/Community";
 import Collaborations from "@/components/Collaborations";
 import Footer from "@/components/Footer";
@@ -33,6 +34,7 @@ const Index = () => {
           <FeaturedProjects />
           <UpcomingProjects />
           <About />
+          <TrendingFeed />
           <Collaborations />
           <Community />
         </main>

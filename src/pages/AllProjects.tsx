@@ -1,4 +1,3 @@
-
 import { Helmet } from "react-helmet";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import Navbar from "@/components/Navbar";
@@ -7,78 +6,35 @@ import { ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
 import ProjectCard from "@/components/ProjectCard";
-import { Pagination, PaginationContent, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious } from "@/components/ui/pagination";
+import { useQuery } from "@tanstack/react-query";
+import { Skeleton } from "@/components/ui/skeleton";
 
-// All DreamSportsLabs open source projects
-const allProjects = [
-  {
-    id: 1,
-    title: "D11-react-native-fast-image",
-    description: "High performance React Native image component optimized for speed and efficiency.",
-    logoSrc: "/placeholder.svg",
-    githubUrl: "https://github.com/dream-sports-labs/react-native-fast-image",
-    docsUrl: "https://github.com/dream-sports-labs/react-native-fast-image#readme",
-  },
-  {
-    id: 2,
-    title: "Marco",
-    description: "Tool to track and optimize app's performance with ease, providing insights for performance improvements.",
-    logoSrc: "/placeholder.svg",
-    githubUrl: "https://github.com/dream-sports-labs/marco",
-    docsUrl: "https://github.com/dream-sports-labs/marco#readme",
-  },
-  {
-    id: 3,
-    title: "Checkmate",
-    description: "Tool to streamline test case management, making it easier to organize and execute tests efficiently.",
-    logoSrc: "/placeholder.svg",
-    githubUrl: "https://github.com/dream-sports-labs/checkmate",
-    docsUrl: "https://github.com/dream-sports-labs/checkmate#readme",
-  },
-  {
-    id: 4,
-    title: "deFrost",
-    description: "Tool to detect frozen frames in React Native apps, helping improve user experience by identifying UI freezes.",
-    logoSrc: "/placeholder.svg",
-    githubUrl: "https://github.com/dream-sports-labs/defrost",
-    docsUrl: "https://github.com/dream-sports-labs/defrost#readme",
-  },
-  {
-    id: 5,
-    title: "rn-benchmarking",
-    description: "A tool for benchmarking React Native applications, allowing developers to measure and compare performance metrics.",
-    logoSrc: "/placeholder.svg",
-    githubUrl: "https://github.com/dream-sports-labs/rn-benchmarking",
-    docsUrl: "https://github.com/dream-sports-labs/rn-benchmarking#readme",
-  },
-  {
-    id: 6,
-    title: "D11-react-native-mqtt",
-    description: "MQTT client library for React Native, enabling efficient real-time communication in mobile applications.",
-    logoSrc: "/placeholder.svg",
-    githubUrl: "https://github.com/dream-sports-labs/react-native-mqtt",
-    docsUrl: "https://github.com/dream-sports-labs/react-native-mqtt#readme",
-  },
-  {
-    id: 7,
-    title: "DOTA",
-    description: "Coming Soon: Helps in over the air updates for React Native applications.",
-    logoSrc: "/placeholder.svg",
-    githubUrl: "https://github.com/orgs/dream-sports-labs/",
-    docsUrl: "https://github.com/orgs/dream-sports-labs/",
-  },
-  {
-    id: 8,
-    title: "INFER",
-    description: "Coming Soon: Helps in over the air delivery of light-weight ML models for mobile applications.",
-    logoSrc: "/placeholder.svg",
-    githubUrl: "https://github.com/orgs/dream-sports-labs/",
-    docsUrl: "https://github.com/orgs/dream-sports-labs/",
-  },
-];
+interface GithubRepo {
+  id: number;
+  name: string;
+  description: string;
+  stargazers_count: number;
+  html_url: string;
+}
+
+const fetchAllGithubRepos = async (): Promise<GithubRepo[]> => {
+  const response = await fetch('https://api.github.com/orgs/dream-sports-labs/repos?per_page=100');
+  if (!response.ok) {
+    throw new Error('Failed to fetch GitHub repositories');
+  }
+  return response.json();
+};
 
 const AllProjects = () => {
   const navigate = useNavigate();
+  
+  const { data: repos, isLoading, error } = useQuery({
+    queryKey: ['all-github-repos'],
+    queryFn: fetchAllGithubRepos
+  });
+
+  // Sort repositories by star count in descending order
+  const sortedRepos = repos?.sort((a, b) => b.stargazers_count - a.stargazers_count) || [];
 
   return (
     <ThemeProvider defaultTheme="light">
@@ -105,38 +61,38 @@ const AllProjects = () => {
               </Button>
             </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-              {allProjects.map((project, index) => (
-                <ProjectCard
-                  key={project.id}
-                  title={project.title}
-                  description={project.description}
-                  logoSrc={project.logoSrc}
-                  githubUrl={project.githubUrl}
-                  docsUrl={project.docsUrl}
-                />
-              ))}
-            </div>
-            
-            <Pagination>
-              <PaginationContent>
-                <PaginationItem>
-                  <PaginationPrevious href="#" />
-                </PaginationItem>
-                <PaginationItem>
-                  <PaginationLink href="#" isActive>1</PaginationLink>
-                </PaginationItem>
-                <PaginationItem>
-                  <PaginationLink href="#">2</PaginationLink>
-                </PaginationItem>
-                <PaginationItem>
-                  <PaginationLink href="#">3</PaginationLink>
-                </PaginationItem>
-                <PaginationItem>
-                  <PaginationNext href="#" />
-                </PaginationItem>
-              </PaginationContent>
-            </Pagination>
+            {isLoading ? (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+                {Array(6).fill(0).map((_, i) => (
+                  <div key={i} className="p-6 border rounded-lg">
+                    <div className="flex items-center gap-3 mb-4">
+                      <Skeleton className="h-12 w-12 rounded-md" />
+                      <Skeleton className="h-6 w-40" />
+                    </div>
+                    <Skeleton className="h-4 w-full mb-2" />
+                    <Skeleton className="h-4 w-3/4 mb-6" />
+                  </div>
+                ))}
+              </div>
+            ) : error ? (
+              <div className="p-6 text-center">
+                <p className="text-red-500">Failed to load projects from GitHub. Please try again later.</p>
+              </div>
+            ) : (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {sortedRepos.map((repo) => (
+                  <ProjectCard
+                    key={repo.id}
+                    title={repo.name}
+                    description={repo.description || "No description available"}
+                    logoSrc="/placeholder.svg"
+                    stars={repo.stargazers_count}
+                    githubUrl={repo.html_url}
+                    variant="featured"
+                  />
+                ))}
+              </div>
+            )}
           </section>
         </main>
         <Footer />
