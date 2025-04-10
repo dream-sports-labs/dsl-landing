@@ -1,0 +1,166 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 0%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 0%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 0%;
+
+    --primary: 0 100% 44%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 0 0% 96%;
+    --secondary-foreground: 0 0% 0%;
+
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 45%;
+
+    --accent: 0 0% 96%;
+    --accent-foreground: 0 0% 0%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 0 0% 90%;
+    --input: 0 0% 90%;
+    --ring: 0 100% 44%;
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 0 0% 26%;
+    --sidebar-primary: 0 0% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 0 0% 96%;
+    --sidebar-accent-foreground: 0 0% 10%;
+    --sidebar-border: 0 0% 91%;
+    --sidebar-ring: 0 100% 44%;
+  }
+
+  .dark {
+    --background: 0 0% 0%;
+    --foreground: 0 0% 98%;
+
+    --card: 0 0% 3%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 0 0% 3%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 0 100% 44%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 0 0% 10%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 0 0% 14%;
+    --muted-foreground: 0 0% 65%;
+
+    --accent: 0 0% 14%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 0 0% 14%;
+    --input: 0 0% 14%;
+    --ring: 0 100% 44%;
+
+    --sidebar-background: 0 0% 5%;
+    --sidebar-foreground: 0 0% 95%;
+    --sidebar-primary: 0 100% 44%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 0 0% 12%;
+    --sidebar-accent-foreground: 0 0% 95%;
+    --sidebar-border: 0 0% 12%;
+    --sidebar-ring: 0 100% 44%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "ss01", "ss02", "cv01", "cv02", "cv03";
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  .project-card {
+    @apply relative bg-card shadow-md rounded-lg overflow-hidden border border-border transition-all duration-300 hover:shadow-xl hover:scale-[1.03] hover:border-primary/50;
+  }
+  
+  .project-card::before {
+    @apply content-[''] absolute -inset-0.5 bg-gradient-to-br from-primary/30 to-transparent opacity-0 transition-opacity duration-300 rounded-lg -z-10;
+  }
+  
+  .project-card:hover::before {
+    @apply opacity-100;
+  }
+  
+  .contribution-card {
+    @apply relative bg-card rounded-lg overflow-hidden transition-all duration-300 hover:scale-[1.02];
+  }
+  
+  .contribution-card::after {
+    @apply content-[''] absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-primary to-transparent scale-x-0 transition-transform duration-500;
+  }
+  
+  .contribution-card:hover::after {
+    @apply scale-x-100;
+  }
+
+  .section-heading {
+    @apply text-3xl md:text-4xl font-bold mb-8 text-center relative inline-block;
+  }
+  
+  .section-heading::after {
+    @apply content-[''] absolute left-1/2 bottom-0 w-16 h-1 bg-primary rounded-full transform -translate-x-1/2 translate-y-4;
+  }
+
+  .section-container {
+    @apply w-full max-w-7xl mx-auto px-4 py-16 md:py-24;
+  }
+
+  .text-gradient {
+    @apply bg-gradient-to-r from-primary to-red-400 bg-clip-text text-transparent;
+  }
+  
+  .btn-hover-effect {
+    @apply relative overflow-hidden transition-all duration-300;
+  }
+  
+  .btn-hover-effect::after {
+    @apply content-[''] absolute top-0 left-0 w-full h-full bg-gradient-shine bg-[length:200%_100%] opacity-0 transition-opacity duration-500;
+  }
+  
+  .btn-hover-effect:hover::after {
+    @apply opacity-100 animate-shimmer;
+  }
+  
+  .social-icon-hover {
+    @apply transition-transform duration-300 ease-in-out hover:scale-110 hover:rotate-6;
+  }
+  
+  .nav-link {
+    @apply relative after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-primary after:left-0 after:-bottom-1 
+    after:transition-all after:duration-300 hover:after:w-full;
+  }
+  
+  .fancy-card-effect {
+    @apply relative z-10 overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent 
+    before:via-primary/20 before:to-transparent before:-z-10 before:translate-x-[-200%] before:skew-x-[-30deg] 
+    before:transition-transform before:duration-1000 before:ease-in-out hover:before:translate-x-[200%];
+  }
+}
