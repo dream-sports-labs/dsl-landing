@@ -191,7 +191,7 @@ const TrendingFeed = () => {
   }, [topTweets.length]);
 
   return (
-    <section id="trending" className="w-full max-w-full py-16 md:py-24 bg-secondary/50">
+    <section id="trending" className="w-full max-w-full py-16 md:py-24">
       <div className="container mx-auto px-4 text-center mb-10">
         <h2 className="text-5xl font-black tracking-tight mb-5">Trending</h2>
         <p className="text-lg text-muted-foreground max-w-6xl mx-auto">

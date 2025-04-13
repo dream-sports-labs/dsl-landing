@@ -4,10 +4,12 @@ import projectsData from "@/data/projects.json";
 
 const UpcomingProjects = () => {
   return (
-    <section id="upcoming-projects" className="section-container bg-secondary/50">
-      <h2 className="section-heading">
-        Upcoming <span className="text-gradient">Projects</span>
-      </h2>
+    <section id="upcoming-projects" className="section-container">
+      <div className="flex items-center justify-between mb-8">
+        <h2 className="section-heading">
+          Upcoming <span className="text-gradient">Projects</span>
+        </h2>
+      </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {projectsData.upcomingProjects.map((project) => (
           <ProjectCard
