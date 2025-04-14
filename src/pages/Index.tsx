@@ -16,6 +16,7 @@ const Index = () => {
     <ThemeProvider defaultTheme="light">
       <Helmet>
         <title>DreamSportsLabs - Open Source Sports Technology by Dream11</title>
+        <link rel="icon" href="/dsl-landing/favicon.ico" />
         <meta name="description" content="DreamSportsLabs is Dream11's umbrella for all open source initiatives and community engagement, fostering innovation in tech." />
         <meta name="keywords" content="Dream11, sports technology, open source, fantasy sports, sports analytics, react native" />
         <meta property="og:title" content="DreamSportsLabs - Open Source Sports Technology" />
