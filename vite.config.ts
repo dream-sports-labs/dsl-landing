@@ -9,7 +9,7 @@ export default defineConfig(({ mode }) => ({
     host: "::",
     port: 8080,
   },
-  base: "/dsl-landing",
+  base: "/",
   plugins: [
     react(),
     mode === 'development' &&
