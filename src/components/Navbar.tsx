@@ -34,7 +34,7 @@ const Navbar = () => {
       <div className="container mx-auto px-4 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-2 group">
           <img 
-            src="/lovable-uploads/9f532731-868c-4fe5-93e2-734f0b13849b.png" 
+            src="./lovable-uploads/9f532731-868c-4fe5-93e2-734f0b13849b.png" 
             alt="DreamSportsLabs Logo" 
             className="h-8 w-8"
           />

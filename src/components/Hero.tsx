@@ -37,7 +37,7 @@ const Hero = () => {
         >
           <div className="flex justify-center mb-6">
             <img 
-              src="/lovable-uploads/9f532731-868c-4fe5-93e2-734f0b13849b.png" 
+              src="./lovable-uploads/9f532731-868c-4fe5-93e2-734f0b13849b.png" 
               alt="DreamSportsLabs Logo" 
               className="w-32 h-32 animate-float"
             />

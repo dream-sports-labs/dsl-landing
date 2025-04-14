@@ -4,7 +4,7 @@
       "id": 1,
       "title": "D11-react-native-fast-image",
       "description": "High performance React Native image component optimized for speed and efficiency.",
-      "logoSrc": "/placeholder.svg",
+      "logoSrc": "./placeholder.svg",
       "githubUrl": "https://github.com/dream-sports-labs/react-native-fast-image",
       "docsUrl": "https://github.com/dream-sports-labs/react-native-fast-image#readme"
     },
@@ -12,7 +12,7 @@
       "id": 2,
       "title": "Marco",
       "description": "Tool to track and optimize app's performance with ease, providing insights for performance improvements.",
-      "logoSrc": "/placeholder.svg",
+      "logoSrc": "./placeholder.svg",
       "githubUrl": "https://github.com/dream-sports-labs/marco",
       "docsUrl": "https://marco.dreamsportslabs.com/project/quick-start/"
     },
@@ -20,7 +20,7 @@
       "id": 3,
       "title": "Checkmate",
       "description": "Tool to streamline test case management, making it easier to organize and execute tests efficiently.",
-      "logoSrc": "/placeholder.svg",
+      "logoSrc": "./placeholder.svg",
       "githubUrl": "https://github.com/dream-sports-labs/checkmate",
       "docsUrl": "https://checkmate.dreamsportslabs.com/project/introduction/"
     },
@@ -28,7 +28,7 @@
       "id": 4,
       "title": "deFrost",
       "description": "Tool to detect frozen frames in React Native apps, helping improve user experience by identifying UI freezes.",
-      "logoSrc": "/placeholder.svg",
+      "logoSrc": "./placeholder.svg",
       "githubUrl": "https://github.com/dream-sports-labs/defrost",
       "docsUrl": "https://github.com/dream-sports-labs/defrost#readme"
     },
@@ -36,7 +36,7 @@
       "id": 5,
       "title": "rn-benchmarking",
       "description": "A tool for benchmarking React Native applications to identify performance bottlenecks and optimize runtime efficiency.",
-      "logoSrc": "/placeholder.svg",
+      "logoSrc": "./placeholder.svg",
       "githubUrl": "https://github.com/dream-sports-labs/rn-benchmarking",
       "docsUrl": "https://github.com/dream-sports-labs/rn-benchmarking#readme"
     }
@@ -46,7 +46,7 @@
       "id": 1,
       "title": "DOTA",
       "description": "Helps in over the air updates for React Native applications, enabling seamless updates without app store submissions.",
-      "logoSrc": "/placeholder.svg",
+      "logoSrc": "./placeholder.svg",
       "githubUrl": "https://github.com/dream-sports-labs/dota",
       "docsUrl": "https://github.com/dream-sports-labs/dota"
     },
@@ -54,7 +54,7 @@
       "id": 2,
       "title": "INFER",
       "description": "Enables over the air delivery of lightweight ML models, bringing machine learning capabilities to mobile applications efficiently.",
-      "logoSrc": "/placeholder.svg",
+      "logoSrc": "./placeholder.svg",
       "githubUrl": "https://github.com/dream-sports-labs/infer",
       "docsUrl": "https://github.com/dream-sports-labs/infer"
     },
@@ -62,7 +62,7 @@
       "id": 3,
       "title": "Guardian",
       "description": "A comprehensive solution that helps in user authentication and security for mobile and web applications.",
-      "logoSrc": "/placeholder.svg",
+      "logoSrc": "./placeholder.svg",
       "githubUrl": "https://github.com/dream-sports-labs/guardian",
       "docsUrl": "https://github.com/dream-sports-labs/guardian"
     },
@@ -70,7 +70,7 @@
       "id": 4,
       "title": "Flash",
       "description": "Server-driven UI framework that allows dynamic UI updates without app releases, improving flexibility and user experience.",
-      "logoSrc": "/placeholder.svg",
+      "logoSrc": "./placeholder.svg",
       "githubUrl": "https://github.com/dream-sports-labs/flash",
       "docsUrl": "https://github.com/dream-sports-labs/flash"
     }
@@ -112,7 +112,7 @@
       "date": "September 2023",
       "location": "Dream11 Office, Mumbai",
       "attendees": "100+ React developers",
-      "imageSrc": "/react-mumbai.svg",
+      "imageSrc": "./react-mumbai.svg",
       "link": "https://x.com/ArshPawar5/status/1893246288277160233"
     },
     {
@@ -121,7 +121,7 @@
       "date": "July 2023",
       "location": "Dream11 Office, Mumbai",
       "attendees": "80+ API developers",
-      "imageSrc": "/kong.svg",
+      "imageSrc": "./kong.svg",
       "link": "https://x.com/Dream11Engg/status/1884145719650705689"
     }
   ],
@@ -180,7 +180,7 @@
       "title": "react-native-fast-image",
       "partner": "React Native Community",
       "description": "FastImage is a React Native component for displaying images with better performance, handling caching, and controlling priority.",
-      "logoSrc": "/placeholder.svg",
+      "logoSrc": "./placeholder.svg",
       "url": "https://github.com/patw0929/react-native-fast-image",
       "contributors": 48,
       "stars": 5800,
@@ -192,7 +192,7 @@
       "title": "marco",
       "partner": "Open Source Community",
       "description": "A framework that helps developers to generate network mocks for their projects, improving testing and development workflows.",
-      "logoSrc": "/placeholder.svg",
+      "logoSrc": "./placeholder.svg",
       "url": "https://github.com/dream-sports-labs/marco",
       "contributors": 12,
       "stars": 76,
@@ -204,7 +204,7 @@
       "title": "checkmate",
       "partner": "Open Source Community",
       "description": "A tool that helps verify and validate application behavior and configurations across different environments.",
-      "logoSrc": "/placeholder.svg",
+      "logoSrc": "./placeholder.svg",
       "url": "https://github.com/dream-sports-labs/checkmate",
       "contributors": 8,
       "stars": 42,
@@ -241,14 +241,14 @@
         "author": "Shubham Gupta",
         "username": "@sg43245",
         "isVerified": false,
-        "profilePic": "/shubham.svg",
+        "profilePic": "./shubham.svg",
         "content": "It was an amazing experience contributing to the React Native 0.78 release testing! 🚀 Huge thanks to @Dream11Engg for this opportunity and to @cortinico & @CipolleschiR from the RN team for your support.Always exciting to be part of the open-source community!🤩",
         "date": "Feb 20, 2025",
         "time": "12:20 PM",
         "likes": 23,
         "replies": 1,
         "hasImage": true,
-        "image": "/tweet.svg",
+        "image": "./tweet.svg",
         "tweetUrl": "https://x.com/sg43245/status/1892466866179784913"
       },
       {
@@ -256,14 +256,14 @@
         "author": "Dream11 Engineering",
         "username": "Dream11Engg",
         "isVerified": false,
-        "profilePic": "/d11logo.svg",
+        "profilePic": "./d11logo.svg",
         "content": "700M+ requests per minute. 1 team. 1 goal — IPL at scale. In Ep.1 of #BehindTheScreens @amitsharmaak takes you inside Dream11’s War Room and break down how we prepare for the biggest cricket season of the year.",
         "date": "Mar 24, 2025",
         "time": "12:49 PM",
         "likes": 8,
         "replies": 1,
         "hasImage": true,
-        "image": "/ipl.svg",
+        "image": "./ipl.svg",
         "tweetUrl": "https://x.com/Dream11Engg/status/1904070513514950700"
       },
       {
@@ -271,14 +271,14 @@
         "author": "Dream11 Engineering",
         "username": "Dream11Engg",
         "isVerified": false,
-        "profilePic": "/d11logo.svg",
+        "profilePic": "./d11logo.svg",
         "content": "🔥Exciting News! Checkmate, our in-house Test Case Management Platform, is now Open Source! 🤩 We built Checkmate to simplify and enhance the way teams manage, execute, and track test cases.",
         "date": "Feb 12, 2025",
         "time": "4:30 PM",
         "likes": 27,
         "replies": 2,
         "hasImage": true,
-        "image": "/checkmate.svg",
+        "image": "./checkmate.svg",
         "tweetUrl": "https://x.com/Dream11Engg/status/1889630726426874274"
       }
     ]
